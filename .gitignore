@@ -1,0 +1,5 @@
+node_modules/
+funil_ilhas.xlsx
+dashboard_data.json
+.DS_Store
+*.log

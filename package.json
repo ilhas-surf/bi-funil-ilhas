@@ -1,0 +1,14 @@
+{
+  "name": "bi-funil-ilhas",
+  "version": "1.0.0",
+  "description": "BI Funil de Vendas - Ilhas de Atibaia",
+  "private": true,
+  "scripts": {
+    "download": "curl -sL -o funil_ilhas.xlsx \"https://docs.google.com/spreadsheets/d/1rAlchmcUZTdoQ8KBcAs9h95YuuzsZf0e/export?format=xlsx\"",
+    "build": "node build_bi.js && node build_dashboard.js",
+    "all": "npm run download && npm run build"
+  },
+  "dependencies": {
+    "xlsx": "^0.18.5"
+  }
+}
