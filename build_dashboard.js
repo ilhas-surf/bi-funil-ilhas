@@ -146,6 +146,7 @@ tbody tr:hover { background: #0f172a; }
     <option value="12">Últimos 12 meses</option>
     <option value="6">Últimos 6 meses</option>
     <option value="3">Últimos 3 meses</option>
+    <option value="1">Último mês</option>
   </select>
   <label style="margin-left: 16px;">Mês foco (funil):</label>
   <select id="monthFocus"></select>
