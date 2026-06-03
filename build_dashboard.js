@@ -8,11 +8,15 @@ data.forEach(d => {
 });
 
 const dataJson = JSON.stringify(data);
+const buildTimestamp = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
 
 const html = `<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>BI Funil de Vendas — Ilhas de Atibaia</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
@@ -136,7 +140,7 @@ tbody tr:hover { background: #0f172a; }
     <h1>BI Funil de Vendas — Ilhas de Atibaia</h1>
     <div class="subtitle">Análise mensal de captação, conversão e faturamento</div>
   </div>
-  <div class="subtitle">Atualizado: <span id="lastUpdate"></span></div>
+  <div class="subtitle">BI gerado em: ${buildTimestamp} (BRT)</div>
 </div>
 
 <div class="filters">
@@ -456,7 +460,6 @@ function refresh() {
   renderFunnel(document.getElementById('monthFocus').value);
 }
 
-document.getElementById('lastUpdate').textContent = new Date().toLocaleDateString('pt-BR');
 const monthSel = document.getElementById('monthFocus');
 DATA.slice().reverse().forEach(d => {
   const opt = document.createElement('option');
