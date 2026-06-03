@@ -9,7 +9,7 @@ Dashboard público com indicadores de funil de vendas, atualizado automaticament
   - `build_bi.js` lê `funil_ilhas.xlsx` e gera `dashboard_data.json`
   - `build_dashboard.js` lê o JSON e gera `index.html`
 - **Hospedagem**: GitHub Pages
-- **Atualização automática**: GitHub Actions roda toda **quarta às 12:00 BRT** (2h antes da reunião)
+- **Atualização automática**: GitHub Actions roda **todo dia às 06:00 BRT** (8h de margem antes da reunião de quarta 14h)
 - **Rebuild manual**: aba Actions → "Update BI" → Run workflow
 
 ## Atualizar manualmente
@@ -32,7 +32,7 @@ Editar a URL em dois lugares:
 Editar o cron em `.github/workflows/update-bi.yml`:
 
 ```yaml
-- cron: '0 15 * * 3'   # min hora dia-mês mês dia-semana (0=dom, 3=qua)
+- cron: '0 9 * * *'   # min hora dia-mês mês dia-semana ('*' = todo dia)
 ```
 
-UTC. Brasil é UTC-3, então `15 UTC = 12 BRT`.
+UTC. Brasil é UTC-3, então `9 UTC = 6 BRT`. GitHub pode atrasar o cron em algumas horas em momentos de pico — manter margem grande.
