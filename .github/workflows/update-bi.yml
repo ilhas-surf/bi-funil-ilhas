@@ -2,8 +2,8 @@ name: Update BI
 
 on:
   schedule:
-    # Quarta 15:00 UTC = 12:00 BRT (2h antes da reunião das 14h)
-    - cron: '0 15 * * 3'
+    # Diariamente 09:00 UTC = 06:00 BRT (8h de margem antes da reunião de quarta 14h)
+    - cron: '0 9 * * *'
   workflow_dispatch:
   push:
     branches: [main]
