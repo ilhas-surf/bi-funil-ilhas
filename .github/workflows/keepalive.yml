@@ -1,0 +1,26 @@
+name: Keepalive
+
+# Faz um commit vazio uma vez por mes para impedir que o GitHub desative
+# o workflow agendado (que para automaticamente apos 60 dias sem atividade).
+
+on:
+  schedule:
+    - cron: '0 12 1 * *'  # dia 1 de cada mes, 12:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Empty commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit --allow-empty -m "chore: keepalive $(date -u +%Y-%m)"
+          git push
